@@ -1,0 +1,50 @@
+local util = require "ludobits.m.util"
+
+local function apply_force(self, force, message)
+	self.force = self.force + force
+	local initial_force = message.normal * message.distance * force
+	msg.post("#collisionobject", "apply_force", { force = initial_force, position = go.get_world_position() })
+end
+
+function init(self)
+	--self.force = vmath.vector3()
+	self.force = 0
+	self.ignore_id = {}
+end
+
+function update(self, dt)
+	local t = 0.3
+	self.force = util.lerp(t, dt, self.force, 0)
+	--self.force.x = util.lerp(t, dt, self.force.x, 0)
+	--self.force.y = util.lerp(t, dt, self.force.y, 0)
+	--print(self.force)
+	if self.force < 1 then
+		self.force = 0
+	end
+	local velocity = go.get("#collisionobject", "linear_velocity")
+	if vmath.length(velocity) > 0 and self.force > 0 then
+		local direction = vmath.normalize(velocity)
+		local force = direction * self.force
+		local position = go.get_world_position()
+		position.x = position.x + math.random(-1,1)
+		position.y = position.y + math.random(-1,1)
+		msg.post("#collisionobject", "apply_force", { force = force, position = position })
+	end
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("contact_point_response") then
+		if self.ignore_id[message.other_id] then
+			return
+		end
+		self.ignore_id[message.other_id] = true
+		timer.delay(0.5, false, function()
+			self.ignore_id[message.other_id] = false
+		end)
+		if message.group == hash("weapon") then
+			apply_force(self, 2000, message)
+		elseif message.group == hash("player") or message.group == hash("enemy") then
+			apply_force(self, 500, message)
+		end
+	end
+end

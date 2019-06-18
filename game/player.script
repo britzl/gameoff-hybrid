@@ -1,0 +1,100 @@
+go.property("player_id", 1)
+go.property("speed", 200)
+
+local mapper = require "in.mapper"
+local state = require "in.state"
+local util = require "ludobits.m.util"
+
+local UP = hash("up")
+local DOWN = hash("down")
+local LEFT = hash("left")
+local RIGHT = hash("right")
+local SWING = hash("swing")
+
+local KEY_W = hash("key_w")
+local KEY_A = hash("key_a")
+local KEY_S = hash("key_s")
+local KEY_D = hash("key_d")
+local KEY_SPACE = hash("key_space")
+
+local function play_animation(self, animation, cb)
+	if self.current_animation == animation then
+		return
+	end
+	self.current_animation = animation
+	sprite.play_flipbook("#sprite", animation, cb)
+end
+
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	mapper.bind(KEY_W, UP, self.player_id)
+	mapper.bind(KEY_A, LEFT, self.player_id)
+	mapper.bind(KEY_S, DOWN, self.player_id)
+	mapper.bind(KEY_D, RIGHT, self.player_id)
+	mapper.bind(KEY_SPACE, SWING, self.player_id)
+	self.state = state.create()
+	self.direction = vmath.vector3()
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	if self.state.is_pressed(UP) then
+		self.direction.y = 1
+	elseif self.state.is_pressed(DOWN) then
+		self.direction.y = -1
+	else
+		self.direction.y = 0
+	end
+	if self.state.is_pressed(LEFT) then
+		self.direction.x = -1
+		sprite.set_hflip("#sprite", true)
+	elseif self.state.is_pressed(RIGHT) then
+		self.direction.x = 1
+		sprite.set_hflip("#sprite", false)
+	else
+		self.direction.x = 0
+	end
+
+	go.set_position(go.get_position() + self.direction * self.speed * dt)
+	
+	if vmath.length(self.direction) == 0 then
+		play_animation(self, "knight_f_idle")
+	else
+		local a = math.deg(math.atan2(self.direction.y, self.direction.x))
+		local current_a = go.get("weapon", "euler.z") % 360
+		a = util.lerp(0.05, dt, current_a, a + 180)
+		go.set("weapon", "euler.z", a)
+		play_animation(self, "knight_f_run")
+	end
+
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("contact_point_response") then
+		if message.group == hash("wall") then
+			go.set_position(go.get_position() + message.normal * message.distance)
+		end
+	end
+	-- Remove this function if not needed
+end
+
+function on_input(self, action_id, action)
+	action_id = mapper.on_input(action_id, self.player_id)
+	if action_id == SWING then
+		if action.released then
+			msg.post("weapon", "swing")
+		end
+	else
+		self.state.on_input(action_id, action)
+	end
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Remove this function if not needed
+end

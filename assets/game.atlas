@@ -1,0 +1,237 @@
+images {
+  image: "/assets/images/mallet.png"
+}
+images {
+  image: "/assets/images/ball.png"
+}
+images {
+  image: "/assets/images/weapons/weapon_axe.png"
+}
+images {
+  image: "/assets/images/weapons/weapon_cleaver.png"
+}
+images {
+  image: "/assets/images/weapons/weapon_hammer.png"
+}
+images {
+  image: "/assets/images/weapons/weapon_katana.png"
+}
+images {
+  image: "/assets/images/weapons/weapon_knife.png"
+}
+images {
+  image: "/assets/images/weapons/weapon_mace.png"
+}
+images {
+  image: "/assets/images/weapons/weapon_machete.png"
+}
+images {
+  image: "/assets/images/weapons/weapon_anime_sword.png"
+}
+images {
+  image: "/assets/images/weapons/weapon_baton_with_spikes.png"
+}
+images {
+  image: "/assets/images/weapons/weapon_big_hammer.png"
+}
+images {
+  image: "/assets/images/weapons/weapon_duel_sword.png"
+}
+images {
+  image: "/assets/images/weapons/weapon_golden_sword.png"
+}
+images {
+  image: "/assets/images/weapons/weapon_green_magic_staff.png"
+}
+images {
+  image: "/assets/images/weapons/weapon_knight_sword.png"
+}
+images {
+  image: "/assets/images/weapons/weapon_lavish_sword.png"
+}
+images {
+  image: "/assets/images/weapons/weapon_red_gem_sword.png"
+}
+images {
+  image: "/assets/images/weapons/weapon_red_magic_staff.png"
+}
+images {
+  image: "/assets/images/weapons/weapon_regular_sword.png"
+}
+images {
+  image: "/assets/images/weapons/weapon_rusty_sword.png"
+}
+images {
+  image: "/assets/images/weapons/weapon_saw_sword.png"
+}
+images {
+  image: "/assets/images/stoneball.png"
+}
+images {
+  image: "/assets/images/stoneball2.png"
+}
+animations {
+  id: "elf_f_run"
+  images {
+    image: "/assets/images/characters/elf_f_run_anim_f0.png"
+  }
+  images {
+    image: "/assets/images/characters/elf_f_run_anim_f1.png"
+  }
+  images {
+    image: "/assets/images/characters/elf_f_run_anim_f2.png"
+  }
+  images {
+    image: "/assets/images/characters/elf_f_run_anim_f3.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "knight_f_run"
+  images {
+    image: "/assets/images/characters/knight_f_run_anim_f0.png"
+  }
+  images {
+    image: "/assets/images/characters/knight_f_run_anim_f1.png"
+  }
+  images {
+    image: "/assets/images/characters/knight_f_run_anim_f2.png"
+  }
+  images {
+    image: "/assets/images/characters/knight_f_run_anim_f3.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "elf_m_idle"
+  images {
+    image: "/assets/images/characters/elf_m_idle_anim_f0.png"
+  }
+  images {
+    image: "/assets/images/characters/elf_m_idle_anim_f1.png"
+  }
+  images {
+    image: "/assets/images/characters/elf_m_idle_anim_f2.png"
+  }
+  images {
+    image: "/assets/images/characters/elf_m_idle_anim_f3.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "elf_m_run"
+  images {
+    image: "/assets/images/characters/elf_m_run_anim_f0.png"
+  }
+  images {
+    image: "/assets/images/characters/elf_m_run_anim_f1.png"
+  }
+  images {
+    image: "/assets/images/characters/elf_m_run_anim_f2.png"
+  }
+  images {
+    image: "/assets/images/characters/elf_m_run_anim_f3.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "elf_m_hit"
+  images {
+    image: "/assets/images/characters/elf_m_hit_anim_f0.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 10
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "knight_f_idle"
+  images {
+    image: "/assets/images/characters/knight_f_idle_anim_f0.png"
+  }
+  images {
+    image: "/assets/images/characters/knight_f_idle_anim_f1.png"
+  }
+  images {
+    image: "/assets/images/characters/knight_f_idle_anim_f2.png"
+  }
+  images {
+    image: "/assets/images/characters/knight_f_idle_anim_f3.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "chort_run"
+  images {
+    image: "/assets/images/enemies/chort_run_anim_f0.png"
+  }
+  images {
+    image: "/assets/images/enemies/chort_run_anim_f1.png"
+  }
+  images {
+    image: "/assets/images/enemies/chort_run_anim_f2.png"
+  }
+  images {
+    image: "/assets/images/enemies/chort_run_anim_f3.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 15
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "coin"
+  images {
+    image: "/assets/images/items/coin_anim_f0.png"
+  }
+  images {
+    image: "/assets/images/items/coin_anim_f1.png"
+  }
+  images {
+    image: "/assets/images/items/coin_anim_f2.png"
+  }
+  images {
+    image: "/assets/images/items/coin_anim_f3.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "goblin"
+  images {
+    image: "/assets/images/enemies/goblin_run_anim_f0.png"
+  }
+  images {
+    image: "/assets/images/enemies/goblin_run_anim_f1.png"
+  }
+  images {
+    image: "/assets/images/enemies/goblin_run_anim_f2.png"
+  }
+  images {
+    image: "/assets/images/enemies/goblin_run_anim_f3.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 15
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+margin: 0
+extrude_borders: 2
+inner_padding: 0
